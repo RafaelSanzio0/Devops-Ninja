@@ -1,0 +1,39 @@
+DEVOPS NA AMAZON
+
+- O software muda rapidamente
+
+Porque o devops é importante
+* 5x menos chances de falha
+* 440x mais rapido entre commit e deploy
+* 46x deploys mais frequentes
+* 44% mais tempo gasto com novas funcionalidades e código
+
+- O que é devops
+Filosofias culturais, práticas e ferramentas
+
+- Cultura devops
+O Dev & Ops caminham juntos, responsabilidade compartilhada, visibilidade e comunicação
+
+- Pratica DevOps
+Microserviço --> migrando de aplicaçoes monoliticas para arquiteturas baseadas em Microserviço
+Integração Continua 
+Deplou Continuo
+Infraestrutura como Codigo --> defina seus recursos na AWS utilizando código
+Monitoração e Log
+  Monitore e analise métricas e logs
+  Compreenda o desempenho da infra-estrutura e da aplicação em tempo responsabilidade
+
+- Beneficio do DevOps
+Colaboração otimizada
+Entrega rápida
+Confiabilidade
+Segurança
+Escala
+Velocidade
+
+- O que a amazon fez com todass essas práticas?
+em 2001 aplicações monoliticas
+em 2009 a amazon tinha todo o seus seviços em micro
+Foi criado ferramentas para automatizar o processo de entrega de software
+  Pipelines: mais rapido, seguro, simplificação e padronização, visualização de processo
+em 2014 milhares de times de serviço, construindo Microserviço, utilizando CI, diversos ambientes(staging, beta, production) = 50 milhoes de deploys
