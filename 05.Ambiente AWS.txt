@@ -1,0 +1,13 @@
+- NETWORK ACL
+após criado a sub-rede e colocado a nossa VM lá dentro é preciso colocar um internet gateway
+para ser possivel acessar da internet essa VM, nas tabelas de roteamento a gente diz onde que o internet
+gateway vai acoplar.
+na tabela de rotas a gente diz que tudo que tiver dentro dessa subnet 0.0.0.0/0 vai para o internet gateway
+
+- EXCLUIR INSTANCIA VIA CMD
+Instale o AWS CLI
+aws ec2 terminate-instances --instance-ids <id>
+
+- Security Group
+É o que é permitido sair ou não da máquina, é nosso firewall
+AllTrafic --> permitido todos os tipos de trafegos para todas as portas

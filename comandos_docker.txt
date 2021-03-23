@@ -1,0 +1,61 @@
+** COMANDO RUN cria sempre novos containers **
+
+** - o docker nao utiliza o mesmo bash da sua maquina local, ele tem seu proprio bash instalado no container, ele em sí compartilha o kernel com sua maquina local porém com algumas particularidades como citado acima **
+
+** CONTAINERS TEM NOMES UNICOS ** 
+
+
+sudo systemctl start docker  <----------- inicializa o docker                                                        
+docker run <image> <----------- roda(instala) uma imagem, além disso ele executa estes 4 comandos automaticamente
+ 	docker image pull <----------- Download automático das imagens não encontradas
+	docker container create <----------- Criação do container
+	docker container start <----------- Execução do container 
+	docker container exec <----------- Uso do modo interativo
+
+docker ps <----------- mostra os containers ativo no momomento (tem o docker container ls que faz a mesma coisa)
+	-a mostra todos os containers que ja foram executados, independente do status
+sudo docker run --rm <image> <command> <----------- roda o container e ja exclui ele da lista de executados(do -a)
+
+sudo docker container run       -it fedora bash <-------- entra dentro de um container(novo) com acesso ao bash do fedora(instalado) com -it
+			--name <string> da um nome ao seu container
+
+sudo docker container start -ai my_container <------ entra em um container ja existente
+
+docker container run -p 8080:80 <img> <---- esta dizendo que vou mapear a img nginx no container(ou seja vai rodar na porta 80) expondo a 8080 onde quem tiver de fora tem acesso (AQUI JA TEREMOS O ACESSO A PAGINA PADRAO DO NGINX)
+	mas se eu quiser mudar o index padrao?
+	jogar depois do 8080:80 -> (-v mapea volumes) passando a pasta do host onde esta o new conteudo : a pasta do container onde quero fazer o 	mapeamento
+
+	"docker container run -p 8080:80 -v $(pwd)/pasta : /usr/share/nginx/html <img>
+	** NOTA SE PASSAMOS UMA PASTA INEXISTENTE o "pasta" iremos receber um 403 forbidden(acesso nao autorizado)
+	prontinho, fizemos uma conexão do nosso container com nossa maquina hots :)
+
+rodando um servidor em background
+segredo esta na flag -d = modo daemon onde um processo é executado em modo background sem interação com o usuário o -it
+ sudo docker container run -d --name ex-daemon-basic -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
+sudo docker container stop <name> 
+
+** MODO INTERATIVO X MODO DAEMON **
+nos temos o modulo -it que é um modo bom para ambiente de devesenvolvido quando vc quer ter acesso ao terminal do container,mexer em algo,testar, ver o logo,
+ja o modo de pro é nomrla utilzar o daemon pois vc só quer startar o container e que ele trabalhe solo(modo mais poderoso do docker)
+
+sudo docker container restart <-- reinicia o container
+sudo docker container logs 98a1f5960d6b <-- me mostra os logs
+sudo docker container inspect 98a1f5960d6b <-- retorna umm json com informações do container
+sudo docker container exec 98a1f5960d6b uname -or <-- me diz por exemplo o sistema que esta rodando dentro do meu container
+sudo docker container rm <id> <-- remove um container(pdoemos varias de img,volume tbm)
+sudo docker container rm -f <-- remove todos os containers
+sudo docker image pull redis:latest < -- baixando o repositorio
+** RUN RODA IMPLICIDAMENTE O PULL QUANDO PERCEBE QUE NAO EXISTE A IMAGEM DESEJADA NO SEU CACHE LOCAL **
+sudo docker image inspect redis:latest
+sudo docker images <-- lista todas as imagens de containers na maquina
+sudo docker image build -t ex2-simple . -->  construir uma img passando o nome e o diretorio
+sudo docker container run ex-build-arg bash 'echo $S3_BUCKET' --> imprimi o valor de uma variavel definido no dockerfile
+sudo docker image build --build-arg S3_BUCKET=myapp -t ex-build-arg . --> altera o valor de um argumento(varriavel
+docker rm -f $(docker ps -a -q) <---- remove todos os containers em execucao
+docker volume rm $(docker volume ls) <---- remove todos os volumes
+
+
+
+
+
+

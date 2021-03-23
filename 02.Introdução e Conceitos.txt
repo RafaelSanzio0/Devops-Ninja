@@ -1,0 +1,67 @@
+Introdução e Conceitos
+
+DEVOPS
+são praticas utilizadas para a integração entre equipes de tecnologia ou seja devops são simplismente
+conceitos e nem se trata diretamente de ferramentas.
+
+INTEGRAÇÃO CONTINUA
+É um dos conceitos dentro da disciplina devops que viabiliza o feedback rapido aos times envolvidos.
+
+JENKIS
+Atualmente a ferramenta mais utilizada para viabilizar os processos de Integração Continua. Podemos assumir o jenkis como
+um osquestrador de processod e CI, responsavel por obter os codigos-fonte, avaliar, compilar, testar e prover um
+feedback aos interessados.
+
+Docker
+Nossa plataforma de conceitos com ela é possivel criar imagens personalizadas como por exemplo do jenkis.
+
+Kubernetes
+osquestrador de containers, gerencia todo o processo de instação e execução de containers, será responsável por gerir
+a execução da nossa img do jenkis e também prover recursos para construção de nosso condigo.
+
+- Containers Docker
+docker é um projeto de codigo aberto que faz a implantação de aplicativos
+dentro de contêiners e é mantido pela empresa Docker Inc. Basicamente é uma mini maquina virtual
+ele tbm é voltado para o mundo de micro-serviço apesar de suportar estruturas monolitos.
+* Container é feito para ser descartado
+* A parte de volume do docker é armazenada separadamente do serviço ou seja caso o docker seja
+* morto o meu banco continua com os dados
+* implementação rapida de aplicativos
+* Portabilidade entre maquinas
+* controle de versao e reutilizacao
+* imagines otimizadas
+* compartilhamento como se fosse um projeto no github
+* manutencao simplificada
+
+- KUBERNETES
+a gente precisa do docker e o Kubernetes faz a orquestração desses containers ou seja: matar o containter de um lugar
+criar em outro lugar, fazer auto scaling do container, fazer balanceamento de carga
+- Rancher
+e o rancher faz oq? ele é um gerenciador de cluster Kubernetes ao inves de entrar em varias maquinas 
+e fique digitando um monte de comando, o rancher automatiza esse processo de instalação e ele criar
+uma camada de gerenciamento e funcionalidades.
+
+ele permite que gerenciamos varios cluster ou seja eu posso ter um cluster de HML, PRD, DEV
+gerenciado por apenas 1 rancher posso ter cluster na nuvem tbm como aws, azure etc...
+
+o rancher cria ferramentas de monitoramento como prometeus e grafana
+o rancher conecta vc no seu LDAP, o Kubernetes puro nao faz interessados
+o rancher tem catalogo de aplicação, tem interface de usuario
+o rancher tem uma serie de funcionalidades que permite que nos instale clusters Kubernetes
+e dentro do cluster a gente coloca a app pra rodar
+
+existe o container(docker), o osquestrador do container(Kubernetes) e o osquestrador do osquestrador do container(rancher)
+
+o rancher tem uma camada que faz o multi-cluster management
+- gerencia
+- upgrades
+- cuida das permisoes
+- monitoramento
+- health check
+- faz backup dos clusters
+
+ou seja tudo que é complicado e dificil fazer em um cluster Kubernetes o rancher faz pra nos
+
+o rancher prove tbm uma inteface para gerenciar o Kubernetes
+
+- o rancher tem kubenerts mt leve que serve para pequenos sistemas como por exemplo iot, padarias, restaurantes etc...
